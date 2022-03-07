@@ -1,0 +1,13 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{etoolbox}
+
+\newcommand{\studentid}{##banner_id##}
+\newtoggle{bit0}
+\newtoggle{bit1}
+\newtoggle{bit2}
+
+\toggle##bit0##{bit0}
+\toggle##bit1##{bit1}
+\toggle##bit2##{bit2}
+
+\input{body.tex}
