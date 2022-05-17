@@ -74,6 +74,7 @@ def compile_exams(output_directory: Path, students_csv_path: Path, body_tex_path
         # Create path names
         dirpath = Path(dirpath)
         student_template_tex_path = dirpath / "template.tex"
+        print(student_template_tex_path)
         student_template_pdf_path = dirpath / "template.pdf"
 
         # Copy the body.tex file into the temporary directory
@@ -85,26 +86,30 @@ def compile_exams(output_directory: Path, students_csv_path: Path, body_tex_path
         # Iterate over students in csv file
         for row in csv.reader(students_csv):
             # Read data from row
-            (name, banner_id, bit0, bit1, bit2) = row
+            (Name_alpha,	Name_print,	Banner_id,	SIS_user_id,	Email,	Filename,	bit0,	bit1,	bit2,	bit3,	bit4,	bit5,	bit6,	bit7) = row
+            print(Name_alpha)
 
             # Replace placeholders in template
             student_template = template \
-                .replace("##banner_id##", banner_id) \
+                .replace("##banner_id##", Banner_id) \
+                .replace("##student_name##", Name_print) \
                 .replace("##bit0##", "true" if bit0 == "1" else "false") \
                 .replace("##bit1##", "true" if bit1 == "1" else "false") \
-                .replace("##bit2##", "true" if bit2 == "1" else "false")
+                .replace("##bit2##", "true" if bit2 == "1" else "false") \
+                .replace("##bit3##", "true" if bit3 == "1" else "false") \
+                .replace("##bit4##", "true" if bit4 == "1" else "false") \
+                .replace("##bit5##", "true" if bit5 == "1" else "false") \
+                .replace("##bit6##", "true" if bit6 == "1" else "false") \
+                .replace("##bit7##", "true" if bit7 == "1" else "false") 
 
             # Write filled in template to temporary directory
             with open(student_template_tex_path, "w") as f:
                 f.write(student_template)
-
             # Compile the latex into a pdf
             subprocess.run(["pdflatex", student_template_tex_path], cwd=dirpath, check=True, \
                             stdout=subprocess.DEVNULL, \
                             stderr=subprocess.STDOUT)
-
-            # Copy output pdf into out directory
-            shutil.copy(student_template_pdf_path, output_directory / f"{banner_id}.pdf")
+            shutil.copy(student_template_pdf_path, output_directory / f"{Filename}.pdf")
 
 
 def main():

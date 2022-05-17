@@ -2,12 +2,41 @@
 \usepackage{etoolbox}
 
 \newcommand{\studentid}{##banner_id##}
+\newcommand{\studentname}{##student_name##}
+
 \newtoggle{bit0}
 \newtoggle{bit1}
 \newtoggle{bit2}
+\newtoggle{bit3}
+\newtoggle{bit4}
+\newtoggle{bit5}
+\newtoggle{bit6}
+\newtoggle{bit7}
 
 \toggle##bit0##{bit0}
 \toggle##bit1##{bit1}
 \toggle##bit2##{bit2}
+\toggle##bit3##{bit3}
+\toggle##bit4##{bit4}
+\toggle##bit5##{bit5}
+\toggle##bit6##{bit6}
+\toggle##bit7##{bit7}
+
+% remove 
+
+\usepackage{etoolbox}
+
+\newcommand{\bitzero}[2]{\iftoggle{bit0}{#1}{#2}}
+\newcommand{\bitone}[2]{\iftoggle{bit1}{#1}{#2}}
+\newcommand{\bittwo}[2]{\iftoggle{bit2}{#1}{#2}}
+\newcommand{\bitthree}[2]{\iftoggle{bit3}{#1}{#2}}
+\newcommand{\bitfour}[2]{\iftoggle{bit4}{#1}{#2}}
+\newcommand{\bitfive}[2]{\iftoggle{bit5}{#1}{#2}}
+\newcommand{\bitsix}[2]{\iftoggle{bit6}{#1}{#2}}
+\newcommand{\bitseven}[2]{\iftoggle{bit7}{#1}{#2}}
+
+% 0-2 are semantic
+% 
+
 
 \input{body.tex}

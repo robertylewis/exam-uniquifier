@@ -1,8 +1,156 @@
+%\documentclass[12pt,letterpaper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{bbm}
+\usepackage{framed}
+\usepackage{mdframed}
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage[letterpaper,voffset=-.5in,bmargin=3cm,footskip=1cm]{geometry}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.1in}
+\allowdisplaybreaks
+\headheight 15pt
+\headsep 10pt
+\newcommand\N{\mathbb N}
+\newcommand\Z{\mathbb Z}
+\newcommand\RR{\mathbb R}
+\newcommand\Q{\mathbb Q}
+\newcommand\lcm{\operatorname{lcm}}
+\newcommand\setbuilder[2]{\ensuremath{\left\{#1\;\middle|\;#2\right\}}}
+\newcommand\E{\operatorname{E}}
+\newcommand\V{\operatorname{V}}
+\newcommand\Pow{\ensuremath{\operatorname{\mathcal{P}}}}
+\usepackage{xspace}
+
+
+
+\newtoggle{solutions}
+\togglefalse{solutions}
+\newcommand{\solution}[1]{\iftoggle{solutions}{
+\fbox{\parbox{\textwidth}{\textbf{Solution}\\#1}}}{}}
+
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand\hint[1]{\textbf{Hint}: #1}
+\newcommand\note[1]{\textbf{Note}: #1}
+\newcounter{enum22i}
+\newenvironment{22enumerate}{\begin{enumerate}[a.]\itemsep0em\setcounter{enumi}{\value{enum22i}}}{\setcounter{enum22i}{\value{enumi}}\end{enumerate}}
+\newenvironment{22itemize}{\begin{itemize}\itemsep0em}{\end{itemize}}
+\fancypagestyle{firstpagestyle} {
+  \renewcommand{\headrulewidth}{0pt}
+  \lhead{\textbf{CSCI 0220}}
+  \chead{\textbf{Discrete Structures and Probability}}
+  \rhead{R. Lewis}
+}
+
+\fancypagestyle{fancyplain} {
+  \renewcommand{\headrulewidth}{0pt}
+  \lhead{\textbf{Brown CS22, Spring 2022}}
+  \chead{Final Exam}
+  \rhead{\textit{\studentname: \studentid}}
+}
+\pagestyle{fancyplain}
+
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\thepage}           % page number in "outer" position of footer line
+\fancyfoot[RE,LO]{\copyright 2022 Robert Y. Lewis. All rights reserved.} % other info in "inner" position of footer line
+
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\GraphInit[vstyle = Shade]
+\tikzset{
+  LabelStyle/.style = { rectangle, rounded corners, draw,
+                        minimum width = 2em, fill = yellow!50,
+                        text = red, font = \bfseries },
+  VertexStyle/.append style = { inner sep=5pt,
+                                font = \normalsize\bfseries},
+  EdgeStyle/.append style = {->, bend left} }
+% \usetikzlibrary {positioning}
+\usetikzlibrary{positioning,chains,fit,shapes,calc}
+
+
+
+
 
 \begin{document}
+  \thispagestyle{firstpagestyle}
+  \begin{center}
+    {\huge \textbf{CSCI0220 Final Exam}}
 
-Exam for: \studentid 
+    {\large Due: \textit{May 14th, 2022 at 11:59pm EDT}}
+  \end{center}
+  
+ {\large \textbf{Please read in full:}}
+ 
+This exam consists of 6 problems. You must complete all problems to receive full credit on the exam. 
+(There are no extra credit or mindbender problems.) Show all of your work.
+ 
+You are not allowed to use the internet outside of the CSCI0220 website and resources. Doing so is a breach of the \textbf{Collaboration Policy} and \textbf{Brown's Academic Code}.
 
-Toggles: \iftoggle{bit0}{bit0 true}{bit0 false}, \iftoggle{bit1}{bit1 true}{bit1 false}, \iftoggle{bit2}{bit2 true}{bit2 false}
+You can refer to lecture slides, lecture captures, your own notes, the course textbook, the website resources, and EdStem. You must complete the entire exam by yourself, without discussion of any kind with anyone else.
+You may not share your exam form with anyone else or upload it to any website, during or after the exam.
+
+Note that your exam form may not be exactly the same as your classmates' exam forms. \emph{You must use the exam form provided to you specifically, with your name and Banner ID on top.}
+
+Please submit your exam on Gradescope when you are done. If you typeset your exam in \LaTeX, please \textbf{also} upload your source file to the separate tex drop assignment.
+You can find an Overleaf template at the following url:
+
+{\scriptsize
+\url{https://www.overleaf.com/docs?snip_uri=https://brown-cs22.github.io/templates/final/Final.zip}
+}
+
+\textbf{By submitting this exam, you are confirming that you have understood these policies, and that you have followed them.} Violating these policies will, at a minimum, result in no credit for this exam.
+
+As always, please do not include any identifying information about yourself in the handin, so that we can grade anonymously. (We will be able to identify your custom version of the exam through Gradescope.) Be sure to fully explain your reasoning and show all work for full credit.
+
+\bigskip 
+
+Exam form for:
+
+\studentname
+
+Banner ID: \studentid
+
+Group: 
+\bitzero{
+\bitone{
+\bittwo{7}{3}
+}{\bittwo{5}{1}}
+}{
+\bitone{
+\bittwo{6}{2}
+}{
+\bittwo{4}{0}
+}
+ } 
+
+\newpage
+
+\subsection*{Problem 1}
+
+Please write or type the following sentences. Your exam will not be accepted without this.
+
+\emph{On my honor, I have neither discussed this exam nor shared any information about it.
+I have not used Google or any unauthorized resources.
+The work I submit is mine and mine alone.}
+
+\subsection*{Problem 2}
+
+Within here you can write \bitzero{alternate}{different} version of your exam\bitsix{!}{.} 
+
+\bitone{a}{b}\bittwo{c}{d} ...
+
 
 \end{document}

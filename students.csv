@@ -1,6 +1,3 @@
-Name,Banner ID,bit0,bit1,bit2
-Rob Lewis,12345,0,0,0
-Jiahua Chen,23456,1,0,0
-Nick Liu,98765,0,1,0
-Rachel Ma,87654,1,0,0
-Walter Zhang,45454,0,0,1
+Name_alpha,Name_print,Banner_id,SIS_user_id,Email,Filename,bit0,bit1,bit2,bit3,bit4,bit5,bit6,bit7
+"One, Person",Person One,B00000000,123456789,person_one@brown.edu,2473-B00000000,0,0,0,1,1,0,1,1
+"Two, Person",Person Two,B20000000,123456799,person_two@brown.edu,2473-B20000000,0,0,0,1,1,0,1,1
